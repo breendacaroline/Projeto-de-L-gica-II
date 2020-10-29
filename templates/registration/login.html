@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Fazer login{% endblock %}
+
+{% block content %}
+<div>
+    <h1 style="text-align:center">Seja bem vindo!</h1>
+    <h4 style="text-align:center">Acesse agora sua conta, ou faça seu cadastro</h4>
+</div>  
+<br>
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card auth-card">
+            <div class="card-body">
+                <h5 class="card-tile text-center">Fazer login</h5>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
+
+                    {{form|crispy}}
+                    <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+
+                </form>
+                <p class="change-p">Não possui uma conta?<a href="/accounts/register"> Clique aqui</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
